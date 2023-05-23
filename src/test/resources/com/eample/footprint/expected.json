@@ -1,0 +1,11 @@
+{
+  "id": 1,
+  "user": {
+    "id": 1,
+    "name": "Johnnie",
+    "height":"5.9",
+    "weight": 190.00,
+    "diet": "typical",
+    "lifestyle": "active"
+  }
+}
