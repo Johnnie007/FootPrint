@@ -19,38 +19,41 @@ public class FootPrintController {
         
         this.userRepository = userRepository;
     }
-   /* @GetMapping("/{requestedId}")
-    public ResponseEntity<Vehicle> findFootPrintById(@PathVariable Long requestedId){
-        //Optional<User> footPrintOptional = userRepository.findById(requestedId);
-        User user = new User(1L, "Johnnie", "5.9", 192.2, "Typical", "Active");
-
+    @GetMapping("/{requestedId}")
+    public ResponseEntity<FootPrint> findById(@PathVariable Long requestedId){
+        User user = new User( "Johnnie", "5.9", 192.2, "Typical", "Active");
         FootPrint footPrint = new FootPrint(1L, user);
-        return ResponseEntity.notFound().build();
 
-    }*/
+        if(requestedId.equals(1L)){
+            return ResponseEntity.ok(footPrint);
+        }else {
 
-    @GetMapping("/user/{requestedId}")
-    public ResponseEntity<User> findById(@PathVariable Long requestedId){
-        Optional<User> userOptional= userRepository.findById(requestedId);
-        if(userOptional.isPresent()){
-            User user = new User(1L, "Johnnie", "5.9", 192.2, "Typical", "Active");
-            return ResponseEntity.ok(user);
-        }
-        else{
             return ResponseEntity.notFound().build();
         }
     }
-    @GetMapping("/user/{requestedId}/Vehicle")
-    public ResponseEntity<Vehicle> findByUser(@PathVariable Long requestedId){
-        Optional<User> userOptional= userRepository.findById(requestedId);
-        if(userOptional.isPresent()){
-            User user1 = new User(1L,"Johnnie", "5.9", 192.2, "Typical", "Active");
-            Vehicle vehicle = new Vehicle (user1, "Nissan", "PathFinder", "2006");
-            return ResponseEntity.ok(vehicle);
-        } else{
-            return ResponseEntity.notFound().build();
-        }
-    }
+
+//    @GetMapping("/{requestedId}/user")
+//    public ResponseEntity<User> findUser(@PathVariable Long requestedId){
+//        Optional<User> userOptional= userRepository.findById(requestedId);
+//        if(userOptional.isPresent()){
+//            User user = new User("Johnnie", "5.9", 192.2, "Typical", "Active");
+//            return ResponseEntity.ok(user);
+//        }
+//        else{
+//            return ResponseEntity.notFound().build();
+//        }
+//    }
+//    @GetMapping("/{requestedId}/user/Vehicle")
+//    public ResponseEntity<Vehicle> findByUser(@PathVariable Long requestedId){
+//        Optional<User> userOptional= userRepository.findById(requestedId);
+//        if(userOptional.isPresent()){
+//            User user1 = new User("Johnnie", "5.9", 192.2, "Typical", "Active");
+//            Vehicle vehicle = new Vehicle (user1, "Nissan", "PathFinder", "2006");
+//            return ResponseEntity.ok(vehicle);
+//        } else{
+//            return ResponseEntity.notFound().build();
+//        }
+//    }
 
     //TODO: Finish this Later
     // @PostMapping

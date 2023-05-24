@@ -17,8 +17,8 @@ public class FootPrintJsonTest{
 
     @Test
     public void footPrintSerializationTest() throws IOException {
-         User user = new User(1l,"Johnnie","5.9", 190.00, "typical", "active");
-         User userTest = new User(1l,"Johnnie","5.9", 190.00, "typical", "active");
+         User user = new User("Johnnie","5.9", 190.00, "typical", "active");
+         User userTest = new User("Johnnie","5.9", 190.00, "typical", "active");
 
         FootPrint footPrint = new FootPrint(1L,user);
 
@@ -34,7 +34,7 @@ public class FootPrintJsonTest{
         String expected = """
                 {
                 "id": 1,
-                "user": {"id": 1,
+                "user": {
                        "name": "Johnnie",
                        "height":"5.9",
                        "weight": 190.00,
@@ -43,7 +43,7 @@ public class FootPrintJsonTest{
                 }
                 """;
 
-        User userTest = new User(1l,"Johnnie","5.9", 190.00, "typical", "active");
+        User userTest = new User("Johnnie","5.9", 190.00, "typical", "active");
 
         assertThat(json.parse(expected)).isEqualTo(new FootPrint(1L, userTest
                 ));
